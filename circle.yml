@@ -9,4 +9,4 @@ dependencies:
 
 test:
   override:
-    - docker run peelsky/ads-user sbt test
+    - docker run peelsky/ads-user sh /bin/sbt test
