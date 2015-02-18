@@ -3,9 +3,13 @@ machine:
     - docker
 
 dependencies:
+  cache_directories:
+    - "~/docker"
   override:
     - docker info
+    - if [[ -e ~/docker/image.tar ]]; then docker load --input ~/docker/image.tar; fi
     - docker build -t peelsky/ads-user .
+    - mkdir -p ~/docker; docker save peelsky/ads-user > ~/docker/image.tar
 
 test:
   override:
